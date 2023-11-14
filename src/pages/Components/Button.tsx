@@ -5,8 +5,6 @@ const Button2 = ({labelButton, onPress}: any) => {
   return (
     <TouchableOpacity style={styles.button} onPress={onPress}>
         <Text style={{fontFamily: 'Aachen', color:'white'}}>{labelButton}</Text>
-
-        <Text>{labelButton}</Text>
     </TouchableOpacity>
   )
 }
