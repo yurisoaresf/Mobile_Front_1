@@ -58,8 +58,19 @@ const Home = ({wishList,setWishList} : any) => {
                     <Icon3 onPress={()=> (setFavorite(true))} name="pushpino" size={25} color="white"></Icon3>
                 }
                 <Button  buttonStyle={[styles.buttonStyle]} onPress={() => {
-                    openToast("Filme adicionado na wishlist")
-                    setWishList([...wishList,movie])
+                    if( wishList.some(item => { 
+                        if (item.name == movie.name){
+                            return true;
+                        }
+
+                        return false;
+                    })){
+                        openToast("Filme já adicionado na wishlist")
+                    } else {
+                        openToast("Filme adicionado na wishlist")
+                        setWishList([...wishList,movie])
+                    }
+                   
                     
                     }} title={<CustomTitle />}></Button>
                 </Card>
