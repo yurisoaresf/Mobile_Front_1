@@ -6,10 +6,13 @@ import CreateAccount from './src/pages/CreateAccount/CreateAccount';
 import ForgotPassword from './src/pages/ForgotPassword/ForgotPassword';
 import Home from './src/pages/Home/Home';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import Icon2 from 'react-native-vector-icons/SimpleLineIcons';
 import WishList from './src/pages/WishList/WishList';
+import { useState } from 'react';
 
 const App = (): JSX.Element => {
-  const Stack = createNativeStackNavigator()
+  const Stack = createNativeStackNavigator();
+  const [wishList, setWishList] = useState([]);
 
   return (
     <NavigationContainer>
@@ -19,15 +22,27 @@ const App = (): JSX.Element => {
           return{
             headerBackVisible: false, 
             headerTitleAlign:"center", 
-            title:"Geek Filmes", 
+            title:"Geek Filmes",
+            headerLeft: () => (
+              <>
+                <Icon2 onPress={() => (navigation.navigate("Login"))} name="logout" size={20} style={{marginLeft:"20%"}}></Icon2>
+ 
+              </> 
+          ),
             headerRight: () => (
               <>
-                <Icon onPress={() => (navigation.navigate("WishList"))} name="star" size={20} style={{marginLeft:"20%",marginRight:"10%"}}></Icon>
-                <Text onPress={() => (navigation.navigate("Login"))} style={{marginLeft:"15%",marginRight:"1%"}}>Sair</Text>
+                <Icon onPress={() => (navigation.navigate("WishList", {wishList}))} name="star" size={20} style={{marginLeft:"20%"}}></Icon>
               </> 
           )
         }
-      }} name="Home" component={Home}></Stack.Screen>
+      }} name="Home">
+        {
+          () => (
+            <Home wishList={wishList} setWishList={setWishList}></Home>
+          )
+        }
+
+      </Stack.Screen>
         <Stack.Screen options={{title: "Create Account", headerTintColor:"#000000", headerTitleAlign:"center"}} name="CreateAccount" component={CreateAccount}></Stack.Screen>
         <Stack.Screen options={{title: "Forgot Password", headerTintColor:"#000000", headerTitleAlign:"center"}} name="ForgotPassword" component={ForgotPassword}></Stack.Screen>
         <Stack.Screen options={{title: "Wishlist", headerTintColor:"#000000", headerBackTitleVisible: false, headerBackVisible: true}} name="WishList" component={WishList}></Stack.Screen>

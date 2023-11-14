@@ -1,6 +1,10 @@
-import React from 'react'
-import { ScrollView, Text, View, StatusBar } from 'react-native'
+import React, { useState } from 'react'
+import { ScrollView, Text, View, StatusBar, ToastAndroid } from 'react-native'
 import { Card, Button } from 'react-native-elements'
+import styles from './HomeStyle';
+import Icon from 'react-native-vector-icons/Icon';
+import Icon3 from 'react-native-vector-icons/AntDesign';
+
 
 
 const products = [
@@ -12,14 +16,20 @@ const products = [
     {name: "Bastardos Inglórios", genero: "Drama/Guerra", duracao: "2h45min", image: "https://br.web.img2.acsta.net/medias/nmedia/18/90/43/36/20096333.jpg"}
 ]
 
-const Home = () => {
+const Home = ({wishList,setWishList} : any) => {
+    const openToast = (message: string) => {
+        ToastAndroid.show(message, 3000);
+    }
+
   return (
-    <ScrollView>
+    <ScrollView style={styles.container}>
         {
         products.map((product, i) => {
+            const [favorite,setFavorite] = useState(false);
+
             return(
                 <Card key={i}>
-                    <Card.Title>{product.name}</Card.Title>
+                    <Card.Title style={styles.card}>{product.name}</Card.Title>
                     <Card.Divider/>
                     <Card.Image source={{uri: product.image}}/>
                 <View style={{flexDirection: "row", marginBottom: "5%", marginTop: "5%", alignSelf: 'center'}}>
@@ -28,7 +38,16 @@ const Home = () => {
                 <View style={{flexDirection: "row", marginBottom: "7%", marginTop: "3%", alignSelf: 'center'}}>
                     <Text>Duração: {product.duracao}</Text>
                 </View>
-                <Button title="Adicionar a wishlist"></Button>
+                {
+                    favorite ? 
+                    <Icon3 onPress={()=> (setFavorite(false))} name="pushpin" size={25} color="#000000"></Icon3>: 
+                    <Icon3 onPress={()=> (setFavorite(true))} name="pushpino" size={25}></Icon3>
+                }
+                <Button buttonStyle={styles.buttonStyle} onPress={() => {
+                    openToast("Filme adicionado na wishlist")
+                    setWishList([...wishList,product])
+                    
+                    }} title="Adicionar a Wishlist"></Button>
                 </Card>
             )
         })}   

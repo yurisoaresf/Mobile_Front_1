@@ -1,9 +1,10 @@
 import React from 'react';
 import { Text, View, TextInput, Button, Image, StatusBar } from 'react-native';
 import styles from './LoginStyle';
+import Button2 from '../Components/Button';
 
-const Login = ({navigation}) => {
-    const goToPage = (path) => {
+const Login = ({navigation}: any) => {
+    const goToPage = (path: any) => {
         navigation.navigate(path);
     }
 
@@ -20,7 +21,7 @@ const Login = ({navigation}) => {
         <Text onPress={()=> (goToPage("CreateAccount"))} style={styles.link}>Create Account</Text>
         <Text onPress={()=> (goToPage("ForgotPassword"))} style={styles.link}>Forgot Password</Text> 
       </View>
-      <Button onPress={()=> (goToPage("Home"))} title="Entrar"></Button>
+      <Button2 onPress={()=> (goToPage("Home"))} labelButton="Entrar"></Button2>
       <StatusBar barStyle={'light-content'}/>
     </View>
   )
