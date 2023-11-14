@@ -7,6 +7,7 @@ import ForgotPassword from './src/pages/ForgotPassword/ForgotPassword';
 import Home from './src/pages/Home/Home';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import WishList from './src/pages/WishList/WishList';
+import MovieDetails from './src/pages/movieDetails/MovieDetails';
 
 const App = (): JSX.Element => {
   const Stack = createNativeStackNavigator()
@@ -31,6 +32,7 @@ const App = (): JSX.Element => {
         <Stack.Screen options={{title: "Create Account", headerTintColor:"#000000", headerTitleAlign:"center"}} name="CreateAccount" component={CreateAccount}></Stack.Screen>
         <Stack.Screen options={{title: "Forgot Password", headerTintColor:"#000000", headerTitleAlign:"center"}} name="ForgotPassword" component={ForgotPassword}></Stack.Screen>
         <Stack.Screen options={{title: "Wishlist", headerTintColor:"#000000", headerBackTitleVisible: false, headerBackVisible: true}} name="WishList" component={WishList}></Stack.Screen>
+        <Stack.Screen options={{title: "Movie Details", headerTintColor:"#000000", headerBackTitleVisible: false, headerBackVisible: true}} name="MovieDetails" component={MovieDetails}></Stack.Screen>
       </Stack.Navigator>
     </NavigationContainer>
     );
