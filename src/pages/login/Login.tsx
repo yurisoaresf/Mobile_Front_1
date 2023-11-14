@@ -44,7 +44,7 @@ const Login = ({navigation}: any) => {
         <Button2 onPress={()=> (goToPage("Home"))} labelButton="Entrar"></Button2>
         <StatusBar barStyle={'light-content'}/>
       </View>
-   
+
   )
 }
 

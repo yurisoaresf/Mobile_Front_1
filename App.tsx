@@ -13,10 +13,11 @@ import { useState } from 'react';
 import { navigationRef } from './src/pages/navigator/RootNavigation';
 import { useFonts } from 'expo-font';
 
+
 const App = (): JSX.Element => {
   const Stack = createNativeStackNavigator();
   const [wishList, setWishList] = useState([]);
-  
+
 
   return (
     <NavigationContainer ref={navigationRef}>
@@ -37,13 +38,18 @@ const App = (): JSX.Element => {
             headerRight: () => (
               <>
                 <Icon onPress={() => (navigation.navigate("WishList", {wishList,setWishList}))} name="star" size={20} style={{marginLeft:"20%"}}></Icon>
+          ),
+           
               </> 
           )
         }
       }} name="Home">
         {
           () => (
+
             <Home wishList={wishList} setWishList={setWishList} navigation={navigationRef}></Home>
+
+
           )
         }
 

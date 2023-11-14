@@ -10,6 +10,7 @@ import { useCallback } from 'react';
 import * as SplashScreen from 'expo-splash-screen';
 
 
+
 const movies = [
     {name: "O Senhor dos Anéis: As Duas Torres", directedBy: "Peter Jackson", overview: "Após a captura de Merry e Pippy pelos orcs, a Sociedade do Anel é dissolvida. Frodo e Sam seguem sua jornada rumo à Montanha da Perdição para destruir o anel e descobrem que estão sendo perseguidos pelo misterioso Gollum. Enquanto isso, Aragorn, o elfo e arqueiro Legolas e o anão Gimli partem para resgatar os hobbits sequestrados e chegam ao reino de Rohan, onde o rei Theoden foi vítima de uma maldição mortal de Saruman.", genero: "Aventura/Fantasia", duracao: "3h00min", image:"https://upload.wikimedia.org/wikipedia/pt/5/59/The_Lord_of_the_Rings_The_Two_Towers.jpg"},
     {name: "Harry Potter e a Pedra Filosofal ", directedBy:'Chris Columbus', overview:'Harry Potter é um garoto órfão que vive infeliz com seus tios, os Dursleys. Ele recebe uma carta contendo um convite para ingressar em Hogwarts, uma famosa escola especializada em formar jovens bruxos. Inicialmente, Harry é impedido de ler a carta por seu tio, mas logo recebe a visita de Hagrid, o guarda-caça de Hogwarts, que chega para levá-lo até a escola. Harry adentra um mundo mágico que jamais imaginara, vivendo diversas aventuras com seus novos amigos, Rony Weasley e Hermione Granger.', genero: "Aventura/Fantasia", duracao: "2h20min", image: "https://musicart.xboxlive.com/7/5dbd5100-0000-0000-0000-000000000002/504/image.jpg?w=1920&h=1080"},
@@ -20,14 +21,16 @@ const movies = [
 ]
 
 
-const Home = ({wishList,setWishList} : any) => { 
+const Home = ({wishList,setWishList} : any) => {
+
     const openToast = (message: string) => {
         ToastAndroid.show(message, 3000);
     }
 
+
     const CustomTitle = () => {
         return (
-            <Text style={{ fontFamily: 'Aachen', color: 'black', fontSize: 18 }}>Adicionar a Whilist</Text>
+            <Text style={{ fontFamily: 'Aachen', color: 'black', fontSize: 18 }}>Adicionar a Wishlist</Text>
         );
     };
 
@@ -44,6 +47,7 @@ const Home = ({wishList,setWishList} : any) => {
                     <Card.Title >
                         <Text style={[styles.card]}>{movie.name}</Text>
                     </Card.Title>
+
                     <Card.Divider/>
                     <Card.Image style={{resizeMode:'contain', marginStart:50, width: 200, height: 300, alignContent: 'center', alignItems:'center'}} onPress={() => (RootNavigation.navigate("MovieDetails",{movie}))} source={{uri: movie.image}}/>
                 <View style={{flexDirection: "row", marginBottom: "5%", marginTop: "5%", alignSelf: 'center'}}>
@@ -54,6 +58,7 @@ const Home = ({wishList,setWishList} : any) => {
                 </View>
                 {
                     favorite ? 
+
                     <Icon3 onPress={()=> (setFavorite(false))} name="pushpin" size={25} color="#fcb300"></Icon3>: 
                     <Icon3 onPress={()=> (setFavorite(true))} name="pushpino" size={25} color="white"></Icon3>
                 }
@@ -73,6 +78,7 @@ const Home = ({wishList,setWishList} : any) => {
                    
                     
                     }} title={<CustomTitle />}></Button>
+
                 </Card>
             )
         })}   

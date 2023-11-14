@@ -1,11 +1,14 @@
+
 import React, { useState } from 'react'
 import { Text, ScrollView, ToastAndroid } from 'react-native';
 import { Button, Card } from 'react-native-elements';
 import styles from './WishListStyle';
 
 
+
 const WishList = ({route}: any) => {
   const {wishList} = route.params
+
   const {setWishList} = route.params
 
   const [newWishList, setWishListRefresh] = useState(wishList)
@@ -38,6 +41,7 @@ const WishList = ({route}: any) => {
                   }} title={<CustomTitle />}>
               </Button>     
             </Card>  
+
             )
           })}   
       </ScrollView>
