@@ -8,17 +8,18 @@ const styles = StyleSheet.create({
       justifyContent: 'flex-start',
     },
     input: {
-        color: "#FFF",
+        color: "#fcb300",
         height: 35,
         width: "100%",
-        borderColor: "#848484",
-        borderWidth: 1,
+        borderColor: "#9a0509",
+        borderWidth: 2.5,
         marginBottom: "5%",
         marginTop: "1%",
         paddingLeft: 10,
+        borderRadius: 8
       },
     setTextColor: {
-        color: "#FFF"
+        color: "#fcb300"
     },
     buttonStyle: {
         backgroundColor: 'black',

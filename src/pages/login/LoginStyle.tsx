@@ -1,14 +1,17 @@
 import { StyleSheet } from 'react-native';
 
+
+
 const styles = StyleSheet.create({
     container: {
       flex: 1,
       backgroundColor: '#000000',
       padding:40,
       justifyContent: 'center',
+      
     },
     input: {
-        color: "#FFF",
+        color: "#fcb300",
         height: 40,
         width: "100%",
         borderColor: "#848484",
@@ -18,7 +21,7 @@ const styles = StyleSheet.create({
         paddingLeft: 10,
       },
     setTextColor: {
-        color: "#FFF"
+        color:"#fcb300"
     },
     setStatusBar:{
         backgroundColor:"#FFF",
@@ -34,9 +37,9 @@ const styles = StyleSheet.create({
         marginBottom: "5%",
     },
     link:{
-        color:"#8c8c8c",
+        color:"#fcb300",
         marginLeft: "5%"
-    }
+    },
   
   });
 
