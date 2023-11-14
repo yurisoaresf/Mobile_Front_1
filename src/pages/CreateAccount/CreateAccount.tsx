@@ -3,23 +3,45 @@ import { Text, TextInput, Button, View, ScrollView} from 'react-native'
 import styles from './CreateAccountStyle';
 import { Card } from 'react-native-elements';
 import Button2 from '../Components/Button';
+import { useCallback } from 'react';
+import * as SplashScreen from 'expo-splash-screen';
+import { useFonts } from 'expo-font';
+
 
 
 const CreateAccount = ({navigation}: any) => {
   const goToPage = (path: any) => {
     navigation.navigate(path);
+
+
+    const [fontsLoaded,fontError] = useFonts({
+      'Benguiat': require('../../../assets/fonts/Benguiat.ttf'),
+      'Aachen': require('../../../assets/fonts/Aachen.ttf'),
+    });
+
+    const onLayoutRootView = useCallback(async () => {
+      if (fontsLoaded || fontError) {
+        await SplashScreen.hideAsync();
+      }
+    }, [fontsLoaded, fontError]);
+  
+    if (!fontsLoaded && !fontError) {
+      return null;
+    }
+
 }
   return (
 
       <View style={styles.container}>
-          <Text style={styles.setTextColor}>Nome:</Text>
-          <TextInput style={styles.input}/>
-          <Text style={styles.setTextColor}>Email:</Text>
-          <TextInput style={styles.input}/>
-          <Text style={styles.setTextColor}>Senha:</Text>
-          <TextInput style={styles.input}/>
-          <Text style={styles.setTextColor}>Confirmar Senha:</Text>
-          <TextInput style={styles.input}/>
+          <Text style={[styles.setTextColor, {fontFamily:'Benguiat'}]}>Nome:</Text>
+          <TextInput style={[styles.input, {fontFamily:'Benguiat'}]}/>
+          <Text style={[styles.setTextColor, {fontFamily:'Benguiat'}]}>Email:</Text>
+          <TextInput style={[styles.input, {fontFamily:'Benguiat'}]}/>
+          <Text style={[styles.setTextColor, {fontFamily:'Benguiat'}]}>Senha:</Text>
+          <TextInput style={[styles.input, {fontFamily:'Benguiat'}]}/>
+          <Text style={[styles.setTextColor, {fontFamily:'Benguiat'}]}>Confirmar Senha:</Text>
+          <TextInput style={[styles.input, {fontFamily:'Benguiat'}]}/>
+
           <Button2 onPress={()=> (goToPage("Login"))} labelButton="Criar Conta"></Button2>
       </View>
   )

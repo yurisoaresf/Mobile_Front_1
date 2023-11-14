@@ -8,18 +8,24 @@ import Home from './src/pages/Home/Home';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import Icon2 from 'react-native-vector-icons/SimpleLineIcons';
 import WishList from './src/pages/WishList/WishList';
+import MovieDetails from './src/pages/movieDetails/MovieDetails';
 import { useState } from 'react';
+import { navigationRef } from './src/pages/navigator/RootNavigation';
+import { useFonts } from 'expo-font';
+
 
 const App = (): JSX.Element => {
   const Stack = createNativeStackNavigator();
   const [wishList, setWishList] = useState([]);
 
+
   return (
-    <NavigationContainer>
+    <NavigationContainer ref={navigationRef}>
       <Stack.Navigator>
         <Stack.Screen options={{headerShown: false}} name="Login" component={Login}></Stack.Screen>
         <Stack.Screen options={({navigation}) => {
           return{
+           
             headerBackVisible: false, 
             headerTitleAlign:"center", 
             title:"Geek Filmes",
@@ -28,17 +34,22 @@ const App = (): JSX.Element => {
                 <Icon2 onPress={() => (navigation.navigate("Login"))} name="logout" size={20} style={{marginLeft:"20%"}}></Icon2>
  
               </> 
-          ),
+          ),  
             headerRight: () => (
               <>
-                <Icon onPress={() => (navigation.navigate("WishList", {wishList}))} name="star" size={20} style={{marginLeft:"20%"}}></Icon>
+                <Icon onPress={() => (navigation.navigate("WishList", {wishList,setWishList}))} name="star" size={20} style={{marginLeft:"20%"}}></Icon>
+          ),
+           
               </> 
           )
         }
       }} name="Home">
         {
           () => (
-            <Home wishList={wishList} setWishList={setWishList}></Home>
+
+            <Home wishList={wishList} setWishList={setWishList} navigation={navigationRef}></Home>
+
+
           )
         }
 
@@ -46,6 +57,7 @@ const App = (): JSX.Element => {
         <Stack.Screen options={{title: "Create Account", headerTintColor:"#000000", headerTitleAlign:"center"}} name="CreateAccount" component={CreateAccount}></Stack.Screen>
         <Stack.Screen options={{title: "Forgot Password", headerTintColor:"#000000", headerTitleAlign:"center"}} name="ForgotPassword" component={ForgotPassword}></Stack.Screen>
         <Stack.Screen options={{title: "Wishlist", headerTintColor:"#000000", headerBackTitleVisible: false, headerBackVisible: true}} name="WishList" component={WishList}></Stack.Screen>
+        <Stack.Screen options={{title: "Movie Details", headerTintColor:"#000000", headerBackTitleVisible: false, headerBackVisible: true}} name="MovieDetails" component={MovieDetails}></Stack.Screen>
       </Stack.Navigator>
     </NavigationContainer>
     );

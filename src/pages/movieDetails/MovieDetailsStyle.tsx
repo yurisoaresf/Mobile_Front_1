@@ -4,7 +4,6 @@ const styles = StyleSheet.create(
     {
     container: {
       flex: 1,
-
       backgroundColor: 'black',
     },
     card: {
@@ -14,7 +13,6 @@ const styles = StyleSheet.create(
     },
     buttonStyle: {
         backgroundColor: 'white',
-
         borderWidth: 2,
         borderColor: 'white',
         borderRadius: 30,
@@ -23,7 +21,6 @@ const styles = StyleSheet.create(
         width: 200,
         marginHorizontal: 50,
         marginVertical: 2,     
-
     }
   }
 )
