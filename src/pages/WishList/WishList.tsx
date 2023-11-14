@@ -1,11 +1,24 @@
 import React from 'react'
-import { Text } from 'react-native';
+import { Text, ScrollView } from 'react-native';
+import { Card } from 'react-native-elements';
 
 
-const WishList = () => {
+const WishList = ({route}: any) => {
+  const {wishList} = route.params
+
   return (
-    <Text>WishList</Text>
-  )
-}
-
+    <ScrollView>
+      {
+        wishList.map((prod:any, i: number) => {
+          return(
+            <Card>
+            <Card.Title>{prod.name}</Card.Title>
+              <Card.Divider/>
+            <Card.Image source={{uri: prod.image}}/>
+          </Card>  
+            )
+          })}   
+      </ScrollView>
+    );
+  }
 export default WishList
